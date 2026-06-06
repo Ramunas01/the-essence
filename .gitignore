@@ -1,0 +1,11 @@
+# Private — NEVER push to the public repo.
+# Holds advisor transcripts and PM session memory.
+start-private/
+
+# Common Python / build noise (the eolex consumer code will live here later)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.DS_Store
