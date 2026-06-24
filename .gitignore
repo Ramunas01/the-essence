@@ -3,7 +3,7 @@
 start-private/
 
 # Raw / large corpora — keep out of the public repo; reproduce via scripts.
-data/
+/data/
 
 # Common Python / build noise (the eolex consumer code will live here later)
 __pycache__/
