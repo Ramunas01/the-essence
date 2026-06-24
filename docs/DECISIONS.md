@@ -79,6 +79,15 @@ artifacts in it on paper:
 If the schema strains, we learn it in an hour. This gate must pass before
 the translator / normalizer / graph builder are written.
 
+**GATE RESULT (2026-06-24): PASSED.** All three axes were hand-encoded by the
+human and the consultant (see `docs/encoding-trials.md`): kidney = relation
+axis, brown-kayak = time axis, kidney/shark = abstraction axis. The substrate
+held; the relational/temporal duality fell out spontaneously (kidney functions
+written once folded as relations, once unfolded as a state machine), and the
+comparison demo distinguished leaf differences (prunable) from root
+differences (essence) — giving the importance model for free. Four strain
+findings were logged and resolved in **D-11**.
+
 ## D-10 — Comparison model · 2026-06-07 · DIRECTION (not yet detailed)
 Align worldlines/relation-sets after climbing to a shared abstraction level
 (anti-unification / least-general generalization → yields shared skeleton +
@@ -91,3 +100,45 @@ stand on: Schank (Conceptual Dependency), Propp (functions), Greimas
 Weisfeiler–Leman canonical labeling, knowledge-component models in ITS.
 NOTE: these theories are *registered type-sets that plug into the typed-graph
 socket*, not the spine itself — do not bake any single one into the primitive.
+
+## D-11 — Fold all four strain findings into SCHEMA v0.1 · 2026-06-24 · LOCKED
+Decided by human + consultant after the T-3 gate (D-9). The four findings
+from `docs/encoding-trials.md` are folded into the schema now rather than
+deferred:
+1. **Metalinguistic facts** (`renal`, `nephro-`) live in eolex / a thin
+   lexical-annotation layer, NOT the world-graph. Schema draws the boundary.
+2. **Setting/environmental & n-ary states** → make **setting a first-class
+   entity with its own worldline** ("sun shining" → "sky got dark" is just
+   the setting's temporal axis, no special case), and allow a single state to
+   attach to two or more entities (genuinely joint states, "boy and kayak
+   laughed"). No new mechanism.
+3. **Attitude / intentional node type** (believes / wants / fears) whose
+   content is a (often hypothetical/future) slice. Folded NOW, not deferred,
+   because a plot *is* the trajectory of what a protagonist wants and whether
+   they get it — the attitude/goal layer sampled along time. Defer it and any
+   future plot census has almost nothing to cluster on. (Ties to the
+   completeness flag: a hoped-for reunion points at an unknown-continuation
+   slice.)
+4. **Holes** already worked; formalize as `completeness` flag. No change.
+
+Merge/split stays reserved (D-7). Rationale that none expands scope: (1) and
+(3) add a thin layer and one node type; (2) reuses the worldline mechanism.
+
+## D-12 — Plot census is a capstone probe, not near-term build · 2026-06-24 · DIRECTION
+The "how many plots are in TinyStories" question is reframed as a *curve, not
+a scalar*: two stories are the same plot when their anti-unified skeleton
+keeps its root structure and differences are leaf-level; climb the abstraction
+axis and plots merge, descend and they split. The real object is the
+dendrogram; "how many plots" is wherever you cut it. This is simultaneously
+(a) the most honest "did we forget a dimension?" coverage test — clustering
+failures point straight at missing/miscalibrated schema parts — and (b) a
+plausible methods+corpus-characterization paper (TinyStories' own diversity
+was measured only lexically; Reagan/Vonnegut emotional-arc work and folktale
+motif indices cluster on different axes; typed worldline-graphs reduced by
+anti-unification is a distinct instrument). It depends on the whole pipeline
+being trustworthy, so it is the **capstone milestone, not near-term**. Its
+requirements are allowed to *constrain* the schema (already did, via #3) but
+must NOT pull design forward. A cheap manual precursor (hand-sort 50–100
+stories into plot piles) gives the human gold-standard needed to validate any
+future automated clustering, and surfaces blind spots for an afternoon's
+reading.

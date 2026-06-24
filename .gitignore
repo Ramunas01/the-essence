@@ -2,6 +2,9 @@
 # Holds advisor transcripts and PM session memory.
 start-private/
 
+# Raw / large corpora — keep out of the public repo; reproduce via scripts.
+data/
+
 # Common Python / build noise (the eolex consumer code will live here later)
 __pycache__/
 *.py[cod]
