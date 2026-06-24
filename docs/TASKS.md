@@ -28,12 +28,12 @@ Last updated: 2026-06-24 (PM session 3).
   attitude content, state_index ordering, untested gaps).
 - Acceptance: consultant + human sign off, or return edits → PM does v0.2.
 
-### T-12 · HUMAN · Manual plot-sort of the sample · TODO (needs T-11)
-- Read the 200 (or 50–100) stories, sort into plot piles by eye. Produces the
-  human gold-standard for any future automated clustering, and surfaces schema
-  blind spots (any feature you use to judge same/different that the schema
-  can't hold = a gap). Cheap precursor to D-12.
-- Acceptance: a piles list + a note of any "can't-encode-this" moments.
+### T-12 · HUMAN · Manual plot-sort of the sample · DOING — template ready
+- Fill `docs/manual-plot-sort.md`: sort the 200 (or 50–100) stories into plot
+  piles by eye. Raw JSONL stays untouched; annotate by `id` in that file.
+- The blind-spots log (judgements the schema can't represent) is the real
+  deliverable — feeds D-12 and SCHEMA review.
+- Acceptance: a piles list + the blind-spots log filled in.
 
 ### T-5 · CONSULTANT+HUMAN · Census altitude(s) decision · TODO
 - Decide which abstraction level(s) the eventual plot census reports (it's a
