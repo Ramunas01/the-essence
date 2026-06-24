@@ -142,3 +142,29 @@ must NOT pull design forward. A cheap manual precursor (hand-sort 50–100
 stories into plot piles) gives the human gold-standard needed to validate any
 future automated clustering, and surfaces blind spots for an afternoon's
 reading.
+
+## D-13 — eolex consumed via a thin factored read-core (Option A) · 2026-06-24 · LOCKED
+Decided by the human. The lexicon's read-side is factored into a thin core
+package **`eolex`** inside the `esperanto-lexicon` repo; both `eolex_relevance`
+(the existing relevance scorer) and `the-essence` depend on it. One copy of the
+read machinery, two consumers — matches the advisor's original "package the
+read-side once" intent (D-2) and avoids the drift of copying. Consumed via
+`pip install "eolex @ git+https://github.com/Ramunas01/esperanto-lexicon.git#subdirectory=eolex"`.
+Brief: `prompts/02-eolex-core-extraction.md`.
+
+**CRITICAL data finding (the DOCX two-tier warning, now verified):** there are
+two distinct tier systems and the existing bundle carries only ONE.
+- `concept_root.tier` / `eo_inventory` tier = **inventory** band
+  (core/extended/tail/modern, productivity). This is what `root_tier()` and the
+  `eolex_relevance` bundle expose today.
+- `concept_lang.tier` = **pedagogical Tier 1–4** (+ `cefr_level`), keyed by
+  word+lang in `lexicon_v2.db` (populated: 1550/3139/97 at tiers 1/2/3). This
+  is the **expertise / abstraction ladder** that the-essence's abstraction axis
+  (SCHEMA §3.3, D-4) is premised on — and it is NOT in the current bundle.
+Therefore `eolex` must expose BOTH, under clearly distinct names
+(`inventory_tier(root)` vs `pedagogical_tier(word, lang)`), and the bundle/build
+must be extended to carry the pedagogical tier + CEFR. Never let the two
+conflate. NB: eolex provides the abstraction *level label*; it does NOT provide
+semantic hypernyms (kidney→organ) — that generalisation is the-essence's own
+abstraction-axis concern, an open question (no hypernym graph exists in the
+lexicon today).

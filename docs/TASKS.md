@@ -50,7 +50,14 @@ Last updated: 2026-06-24 (PM session 3).
   comparison demo gives the leaf-vs-root importance model. Strain findings
   resolved in D-11. See D-9 gate result.
 
-### T-4 · CODE · Provide `eolex` read API · TODO — RESCOPED (much already exists)
+### T-4 · CODE · Provide `eolex` read API · READY — brief written; hand to lexicon Code agent
+- **Decision (D-13):** Option A — factor a thin `eolex` core; both
+  `eolex_relevance` and the-essence depend on it. Brief:
+  `prompts/02-eolex-core-extraction.md` (executed in the esperanto-lexicon repo).
+- **Verified data finding:** two tier systems. Bundle carries only the
+  inventory tier (core/extended/tail/modern). The **pedagogical Tier 1–4**
+  (`concept_lang.tier`, 1550/3139/97 at 1/2/3, + CEFR) — which the abstraction
+  axis needs — is NOT in the bundle; the brief requires exposing it distinctly.
 - **Finding (2026-06-24):** the read-side machinery the-essence needs already
   exists in `esperanto-lexicon`, branch `feat/eolex-relevance-package`, as the
   package **`eolex_relevance`** (pushed). It contains:
@@ -64,19 +71,9 @@ Last updated: 2026-06-24 (PM session 3).
   the-essence does NOT need; the read primitives are effectively internal.
 - NOTE: GitHub `Ramunas01/esperanto-lexicon-knowledge` is NOT this work
   (empty: LICENSE+README). The work is local on the lexicon repo branch.
-- **Open decision (human + consultant + lexicon Code agent):** how the-essence
-  consumes the read-side — see the two options below. Was T-4 "extract from
-  scratch"; now it's "expose / factor the existing read-side." Still no schema
-  dependency, can proceed in parallel.
-  - **Option A (clean, matches advisor intent):** factor `resolver` +
-    `eo_decomposer` + `bundle` read-path into a thin core pkg `eolex` that BOTH
-    `eolex_relevance` and `the-essence` depend on. One copy, two consumers.
-  - **Option B (fast, coupled):** the-essence depends on `eolex_relevance`
-    directly and imports its (non-public) `Decomposer`/`Bundle`. Quick but
-    drags in a scorer it doesn't use and relies on internal API.
-- Missing either way: an explicit **Tier-1 reduction / generalize-to-Tier-1**
-  helper (the abstraction-axis op) on top of `root_tier` + bundle tiers.
-- PM to write `prompts/02-eolex-*.md` once the option is chosen.
+- Note: eolex provides the abstraction *level label* (tier), NOT semantic
+  hypernyms (kidney→organ); that generalisation is the-essence's own open
+  problem (no hypernym graph in the lexicon today).
 
 ## Next — pipeline (BLOCKED until SCHEMA v0.1 is signed off, T-2)
 
