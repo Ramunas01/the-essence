@@ -12,11 +12,12 @@ Last updated: 2026-06-24 (PM session 3).
 
 ## Tonight — low-cognition / technical (human's energy is low)
 
-### T-11 · CODE · Fetch TinyStories sample · TODO ← hand this to the Code agent now
-- Brief: `prompts/01-tinystories-fetch.md`. Pull 200 deduped stories from
-  `roneneldan/TinyStories`, store as gitignored JSONL, commit the script.
-- Independent of the schema — safe to run tonight.
-- Acceptance: see brief (200 unique stories, valid JSONL, script reproducible).
+### T-11 · CODE · Fetch TinyStories sample · REVIEW — PR #1 open, all checks pass
+- Brief: `prompts/01-tinystories-fetch.md`. Done: 200 deduped stories,
+  streaming fetch, gitignored JSONL, script committed. Dataset SHA
+  `f54c09fd…`; 0 duplicates in first 200. Programmer also fixed `data/` →
+  `/data/` so `src/data/` isn't wrongly ignored (correct).
+- PM review: clean, minimal (80+/1-), MERGEABLE. **Recommend HUMAN merge.**
 
 ## For your morning — full-capacity work
 
@@ -49,11 +50,33 @@ Last updated: 2026-06-24 (PM session 3).
   comparison demo gives the leaf-vs-root importance model. Strain findings
   resolved in D-11. See D-9 gate result.
 
-### T-4 · CODE · Extract `eolex` read-only API · TODO (parallel — no schema dep)
-- In the **esperanto-lexicon** repo: thin installable package exposing load
-  db/inventory, Tier-1 reduction, root decomposition, lookups. Data ships as
-  package data (D-2). PM to write `prompts/02-eolex-extraction.md` before
-  handing off. Lower priority than T-11 for tonight (more cognition to review).
+### T-4 · CODE · Provide `eolex` read API · TODO — RESCOPED (much already exists)
+- **Finding (2026-06-24):** the read-side machinery the-essence needs already
+  exists in `esperanto-lexicon`, branch `feat/eolex-relevance-package`, as the
+  package **`eolex_relevance`** (pushed). It contains:
+  - `Decomposer` (`decompose`, `decompose_word`, `root_tier`; ContentRoot /
+    Decomposition with `.head`/`.is_compound`/`.roots`) — root decomposition
+    + tier, exactly what SCHEMA §3.3 (abstraction axis) needs;
+  - `Resolver` (text → content roots, multilingual) — word→root lookup;
+  - `Bundle` — a portable SQLite carrying `eo_root(root, tier, prod, gloss)`
+    and `word_root(lang, word, root)`; "build-once / load-many" already.
+  BUT its **public API is relevance-scoring** (`RelevanceScorer`), which
+  the-essence does NOT need; the read primitives are effectively internal.
+- NOTE: GitHub `Ramunas01/esperanto-lexicon-knowledge` is NOT this work
+  (empty: LICENSE+README). The work is local on the lexicon repo branch.
+- **Open decision (human + consultant + lexicon Code agent):** how the-essence
+  consumes the read-side — see the two options below. Was T-4 "extract from
+  scratch"; now it's "expose / factor the existing read-side." Still no schema
+  dependency, can proceed in parallel.
+  - **Option A (clean, matches advisor intent):** factor `resolver` +
+    `eo_decomposer` + `bundle` read-path into a thin core pkg `eolex` that BOTH
+    `eolex_relevance` and `the-essence` depend on. One copy, two consumers.
+  - **Option B (fast, coupled):** the-essence depends on `eolex_relevance`
+    directly and imports its (non-public) `Decomposer`/`Bundle`. Quick but
+    drags in a scorer it doesn't use and relies on internal API.
+- Missing either way: an explicit **Tier-1 reduction / generalize-to-Tier-1**
+  helper (the abstraction-axis op) on top of `root_tier` + bundle tiers.
+- PM to write `prompts/02-eolex-*.md` once the option is chosen.
 
 ## Next — pipeline (BLOCKED until SCHEMA v0.1 is signed off, T-2)
 
