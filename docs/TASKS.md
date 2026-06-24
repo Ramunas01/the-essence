@@ -50,7 +50,15 @@ Last updated: 2026-06-24 (PM session 3).
   comparison demo gives the leaf-vs-root importance model. Strain findings
   resolved in D-11. See D-9 gate result.
 
-### T-4 · CODE · Provide `eolex` read API · READY — brief written; hand to lexicon Code agent
+### T-4 · CODE · Provide `eolex` read API · REVIEW — PR #4 open, meets brief
+- PR: `Ramunas01/esperanto-lexicon#4`, MERGEABLE. PM review: meets Brief 02 —
+  distinct `inventory_tier(root)` vs `pedagogical_tier(word, lang)` (+ `cefr`,
+  `roots`, `decompose`, `gloss`), offline `Lexicon.load()` from a committed
+  `lexicon.bundle`, `eolex_relevance` unchanged (27 tests), 61 tests total.
+  EO pedagogical tiers synthesised via `concept.eo_word` JOIN `concept_lang`
+  MIN(tier) → 2,660 entries. **Recommend HUMAN merge.** After merge, the-essence
+  can `pip install` eolex from git (#subdirectory=eolex). Still gated for
+  pipeline use by SCHEMA signoff (T-2), so no rush.
 - **Decision (D-13):** Option A — factor a thin `eolex` core; both
   `eolex_relevance` and the-essence depend on it. Brief:
   `prompts/02-eolex-core-extraction.md` (executed in the esperanto-lexicon repo).
